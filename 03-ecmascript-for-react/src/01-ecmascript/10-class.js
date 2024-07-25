@@ -18,21 +18,21 @@ const _ApiClient = (function () {
 
   ApiClient.prototype.create = function (data) {
     return fetch(this._endpoint, {
-      method: 'POST',
+      method: "POST",
       body: JSON.stringify(data),
     }).then((response) => response.json());
   };
 
   ApiClient.prototype.update = function (id, data) {
     return fetch(`${this._endpoint}/${id}`, {
-      method: 'PATCH',
+      method: "PATCH",
       body: JSON.stringify(data),
     }).then((response) => response.json());
   };
 
   ApiClient.prototype.delete = function (id) {
     return fetch(`${this._endpoint}/${id}`, {
-      method: 'DELETE',
+      method: "DELETE",
     }).then((response) => response.json());
   };
 
@@ -42,8 +42,14 @@ const _ApiClient = (function () {
 // 🔶 Class 구문을 사용해 ApiClient 클래스를 작성합니다.
 // 참고: https://mzl.la/3UdwrNE
 
+class ApiClient {
+  constructor(endpoint) {
+    this.#endpoint = endpoint;
+  }
+}
+
 const todosService = new _ApiClient(
-  'https://jsonplaceholder.typicode.com/todos'
+  "https://jsonplaceholder.typicode.com/todos"
 );
 
 // --------------------------------------------------------------------------
@@ -56,7 +62,7 @@ run.create = () =>
   todosService.create({
     id: 0,
     userId: 0,
-    title: 'ES 클래스 구문',
+    title: "ES 클래스 구문",
     completed: false,
   });
 
